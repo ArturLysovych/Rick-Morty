@@ -71,4 +71,15 @@ ul div .img-wrapper {
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.MuiList-root {
+  flex-direction: column;
+  gap: 0;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }/*# sourceMappingURL=CharacterList.css.map */

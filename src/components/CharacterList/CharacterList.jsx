@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Character from '../Character/Character';
 import './css/CharacterList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCharacters } from '../../redux/services/api';
@@ -12,27 +13,40 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { TextField } from '@mui/material';
 
-export default function CharacterList() {
+export function CharacterList() {
     const [currentCharacter, setCurrentCharacter] = useState({});
     const [popupVisible, setPopupVisible] = useState(false);
     const [currentInfo, setCurrentInfo] = useState('characters');
-    const [infoArr, setInfoArr] = useState([]); 
+    const [infoArr, setInfoArr] = useState([]);
+    const [page, setPage] = useState(1);
+    const [pageLimit, setPageLimit] = useState(42);
+    const [filterStatus, setFilterStatus] = useState('');
+    const [filterGender, setFilterGender] = useState('');
+    const [filterName, setFilterName] = useState('');
+
     const characters = useSelector((state) => state.characters.list);
     const episodes = useSelector((state) => state.episodes.list);
     const locations = useSelector((state) => state.locations.list);
     const charactersPages = useSelector((state) => state.characters.limit);
     const episodesPages = useSelector((state) => state.episodes.limit);
     const locationsPages = useSelector((state) => state.locations.limit);
-    const [page, setPage] = useState(1);
-    const [pageLimit, setPageLimit] = useState(42);
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(fetchCharacters({ page, status: '' }));
-      dispatch(fetchLocations({ page, }));
-      dispatch(fetchEpisodes({ page, }));
-    }, [dispatch, page]);    
+      dispatch(fetchCharacters({ page, status: filterStatus, gender: filterGender, name: filterName }));
+      dispatch(fetchLocations({ page }));
+      dispatch(fetchEpisodes({ page }));
+    }, [dispatch, page]);  
+
+    useEffect(() => {
+      dispatch(fetchCharacters({ page, status: filterStatus, gender: filterGender, name: filterName }));
+    }, [dispatch, page, filterStatus, filterGender, filterName]);
 
     useEffect(() => {
       if(currentInfo==="characters") {
@@ -54,10 +68,6 @@ export default function CharacterList() {
       setPage(newPage);
     };
   
-    useEffect(() => {
-      dispatch(fetchCharacters({ page, status: '' }));
-    }, [dispatch, page]);
-    
     const showPopup = (character) => {
       setCurrentCharacter(character);
       setPopupVisible(true);
@@ -67,6 +77,13 @@ export default function CharacterList() {
       setPopupVisible(false);
     };
 
+    const handleChangeStatus = (event) => {
+      setFilterStatus(event.target.value);
+    };
+    const handleChangeGender = (event) => {
+      setFilterGender(event.target.value);
+    };
+
     return (
       <div className="CharacterList">
         <div className="popup" style={{ display: popupVisible ? 'flex' : 'none' }}>
@@ -74,27 +91,62 @@ export default function CharacterList() {
           <h2>{currentCharacter.name}</h2>
           <button onClick={hidePopup}>hide</button>
         </div>
-        <h1>Ricky Morty Characters</h1>
+        <h1>Rick Morty Characters</h1>
         <div className="buttons">
           <Button variant="contained" onClick={() => {setCurrentInfo("characters"); setPage(1);}}>Characters</Button>
           <Button variant="contained" onClick={() => {setCurrentInfo("episodes"); setPage(1);}}>Episodes</Button>
           <Button variant="contained" onClick={() => {setCurrentInfo("locations"); setPage(1);}}>Locations</Button>
         </div>
+        <div className="filterContainer">
+          <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
+          <InputLabel id="demo-select-small-label">Status</InputLabel>
+          <Select
+            labelId="demo-select-small-label"
+            id="demo-select-small"
+            value={filterStatus}
+            label="Status"
+            onChange={handleChangeStatus}
+          >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={'alive'}>alive</MenuItem>
+          <MenuItem value={'dead'}>dead</MenuItem>
+          <MenuItem value={'unknown'}>unknown</MenuItem>
+          </Select>
+          </FormControl>
+          <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
+            <InputLabel id="demo-select-small-label">Gender</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={filterGender}
+              label="Status"
+              onChange={handleChangeGender}
+            >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={'female'}>female</MenuItem>
+            <MenuItem value={'male'}>male</MenuItem>
+            <MenuItem value={'genderless'}>genderless</MenuItem>
+            <MenuItem value={'unknown'}>unknown</MenuItem>
+            </Select>
+          </FormControl>
+          <TextField id="standard-basic" label="Outlined" variant="standard" className='nameInput' onChange={(e) => {
+            setFilterName(e.target.value)
+          }} />
+        </div>
         <ul>
         {currentInfo === "characters" ? (
           infoArr.map((character) => (
-            <div key={character.id} onClick={() => showPopup(character)}>
-              <div className="img-wrapper">
-                <img src={character.image} alt={character.id} />
-              </div>
-              <div>
-                <h2>{character.name}</h2>
-              </div>
-            </div>
+            <Character character={character} showPopup={(character) => {
+              showPopup(character)
+            }}/>
           ))
         ) : null}
         {currentInfo === "episodes" ? (
-              <TableContainer component={Paper}>
+            <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                 <TableHead>
                   <TableRow>

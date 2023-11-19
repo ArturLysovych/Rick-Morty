@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const BASE_URL = 'https://rickandmortyapi.com/api/';
 
-export const fetchCharacters = createAsyncThunk('characters/fetchCharacters', async ({ page, status }) => {
-  const response = await axios.get(`${BASE_URL}character/?page=${page}&status=${status}`);
+export const fetchCharacters = createAsyncThunk('characters/fetchCharacters', async ({ page, status, gender, name }) => {
+  const response = await axios.get(`${BASE_URL}character/?page=${page}&status=${status}&gender=${gender}&name=${name}`);
   return {
     info: response.data.results,
     length: response.data.info.pages

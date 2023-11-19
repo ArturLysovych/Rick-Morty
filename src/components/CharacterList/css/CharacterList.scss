@@ -73,3 +73,15 @@ ul {
     justify-content: center;
     gap: 20px;
 }
+
+.MuiList-root {
+    flex-direction: column;
+    gap: 0;
+}
+
+.filterContainer {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

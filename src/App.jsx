@@ -1,5 +1,5 @@
 import './App.css'
-import CharacterList from './components/CharacterList/CharacterList'
+import { CharacterList } from './components/CharacterList/CharacterList.jsx';
 import HomePage from './components/HomePage/HomePage'
 import { Provider } from 'react-redux';
 import store from './redux/store';
