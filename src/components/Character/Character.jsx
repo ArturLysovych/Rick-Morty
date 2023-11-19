@@ -4,12 +4,12 @@ export default function Character(props) {
     const { character, showPopup } = props;
     
     return (
-        <div key={character.id} onClick={() => {showPopup(character)}}>
+        <div className='card' key={character.id} onClick={() => {showPopup(character); console.log(character)}}>
           <div className="img-wrapper">
             <img src={character.image} alt={character.id} />
           </div>
-          <div>
-            <h2>{character.name}</h2>
+          <div className='card-bottom'>
+            <p>{character.name}</p>
           </div>
         </div>  
     )

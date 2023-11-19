@@ -5,12 +5,15 @@
 }
 
 .HomePage {
-  width: 100%;
+  width: 100% !important;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url("../images/bg.png");
 }
 .HomePage h1 {
-  font-size: 96px;
+  font-size: 124px;
+  color: #01B4C6;
+  text-shadow: 4px 4px 0px #97ce4c;
 }/*# sourceMappingURL=HomePage.css.map */

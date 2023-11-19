@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Character from '../Character/Character';
+import EpisodesTable from '../EpisodesTable/EpisodesTable';
+import LocationsTable from '../LocationsTable/LocationsTable';
 import './css/CharacterList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCharacters } from '../../redux/services/api';
 import { fetchEpisodes } from '../../redux/services/api';
 import { fetchLocations } from '../../redux/services/api';
 import { Pagination, Button } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { TextField } from '@mui/material';
+import { ButtonGroup } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { TextField } from '@mui/material';
 
 export function CharacterList() {
     const [currentCharacter, setCurrentCharacter] = useState({});
@@ -29,7 +25,6 @@ export function CharacterList() {
     const [filterStatus, setFilterStatus] = useState('');
     const [filterGender, setFilterGender] = useState('');
     const [filterName, setFilterName] = useState('');
-
     const characters = useSelector((state) => state.characters.list);
     const episodes = useSelector((state) => state.episodes.list);
     const locations = useSelector((state) => state.locations.list);
@@ -85,58 +80,56 @@ export function CharacterList() {
     };
 
     return (
-      <div className="CharacterList">
-        <div className="popup" style={{ display: popupVisible ? 'flex' : 'none' }}>
-          <img src={currentCharacter.image} alt={currentCharacter.id} />
-          <h2>{currentCharacter.name}</h2>
-          <button onClick={hidePopup}>hide</button>
-        </div>
-        <h1>Rick Morty Characters</h1>
-        <div className="buttons">
-          <Button variant="contained" onClick={() => {setCurrentInfo("characters"); setPage(1);}}>Characters</Button>
-          <Button variant="contained" onClick={() => {setCurrentInfo("episodes"); setPage(1);}}>Episodes</Button>
-          <Button variant="contained" onClick={() => {setCurrentInfo("locations"); setPage(1);}}>Locations</Button>
-        </div>
-        <div className="filterContainer">
-          <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
-          <InputLabel id="demo-select-small-label">Status</InputLabel>
-          <Select
-            labelId="demo-select-small-label"
-            id="demo-select-small"
-            value={filterStatus}
-            label="Status"
-            onChange={handleChangeStatus}
-          >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={'alive'}>alive</MenuItem>
-          <MenuItem value={'dead'}>dead</MenuItem>
-          <MenuItem value={'unknown'}>unknown</MenuItem>
-          </Select>
-          </FormControl>
-          <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
-            <InputLabel id="demo-select-small-label">Gender</InputLabel>
+      <>
+      <div className="CharacterList" style={popupVisible ? { filter: 'blur(10px)' } : { filter: 'blur(0)' }}>
+        <h2>Rick Morty Info</h2>
+          <ButtonGroup variant="outlined" aria-label="outlined button group" size='large'>
+            <Button onClick={() => {setCurrentInfo("characters"); setPage(1);}}>Characters</Button>
+            <Button onClick={() => {setCurrentInfo("episodes"); setPage(1);}}>Episodes</Button>
+            <Button onClick={() => {setCurrentInfo("locations"); setPage(1);}}>Locations</Button>
+          </ButtonGroup>
+        {currentInfo === "characters" ? (
+          <div className="filterContainer">
+            <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
+            <InputLabel id="demo-select-small-label">Status</InputLabel>
             <Select
               labelId="demo-select-small-label"
               id="demo-select-small"
-              value={filterGender}
+              value={filterStatus}
               label="Status"
-              onChange={handleChangeGender}
+              onChange={handleChangeStatus}
             >
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            <MenuItem value={'female'}>female</MenuItem>
-            <MenuItem value={'male'}>male</MenuItem>
-            <MenuItem value={'genderless'}>genderless</MenuItem>
+            <MenuItem value={'alive'}>alive</MenuItem>
+            <MenuItem value={'dead'}>dead</MenuItem>
             <MenuItem value={'unknown'}>unknown</MenuItem>
             </Select>
-          </FormControl>
-          <TextField id="standard-basic" label="Outlined" variant="standard" className='nameInput' onChange={(e) => {
-            setFilterName(e.target.value)
-          }} />
-        </div>
+            </FormControl>
+            <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
+              <InputLabel id="demo-select-small-label">Gender</InputLabel>
+              <Select
+                labelId="demo-select-small-label"
+                id="demo-select-small"
+                value={filterGender}
+                label="Status"
+                onChange={handleChangeGender}
+              >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={'female'}>female</MenuItem>
+              <MenuItem value={'male'}>male</MenuItem>
+              <MenuItem value={'genderless'}>genderless</MenuItem>
+              <MenuItem value={'unknown'}>unknown</MenuItem>
+              </Select>
+            </FormControl>
+            <input type="text" className='nameInput' placeholder='Search character' onChange={(e) => {
+              setFilterName(e.target.value)
+            }}/>
+          </div>
+        ) : null}
         <ul>
         {currentInfo === "characters" ? (
           infoArr.map((character) => (
@@ -146,64 +139,10 @@ export function CharacterList() {
           ))
         ) : null}
         {currentInfo === "episodes" ? (
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell align="right">Episode</TableCell>
-                    <TableCell align="right">Created</TableCell>
-                    <TableCell align="right">Id</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {infoArr.map((row) => (
-                    <TableRow
-                      key={row.id}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.episode}</TableCell>
-                      <TableCell align="right">{row.air_date}</TableCell>
-                      <TableCell align="right">{row.id}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+          <EpisodesTable infoArr={infoArr} />
         ) : null}
         {currentInfo === "locations" ? (
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650, maxWidth:800 }} size="small" aria-label="a dense table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell align="right">Dimensions</TableCell>
-                    <TableCell align="right">Created</TableCell>
-                    <TableCell align="right">Type</TableCell>
-                    <TableCell align="right">Id</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {infoArr.map((row) => (
-                    <TableRow
-                      key={row.id}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.dimension}</TableCell>
-                      <TableCell align="right">{row.created}</TableCell>
-                      <TableCell align="right">{row.type}</TableCell>
-                      <TableCell align="right">{row.id}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+          <LocationsTable infoArr={infoArr} />
         ) : null}
         </ul>
         <div className='paginationContainer'>
@@ -215,7 +154,18 @@ export function CharacterList() {
                   handlePageChange(newPage);
                 }}
             />
-        </div>
+        </div> 
       </div>
+      <div className="popup" style={{ transform: popupVisible ? 'scale(1)' : 'scale(0)' }} onClick={hidePopup}>
+      <img src={currentCharacter.image} alt={currentCharacter.id} />
+      <ul>
+        <h2>{currentCharacter.name}</h2>
+          <li>Gender - <span>{currentCharacter.gender}</span></li>
+          <li>Species - <span>{currentCharacter.species}</span></li>
+          <li>Location - <span>{currentCharacter.location && currentCharacter.location.name}</span></li>
+          <li>Status - <span>{currentCharacter.status}</span></li>
+      </ul>
+    </div> 
+    </>
     );
 }

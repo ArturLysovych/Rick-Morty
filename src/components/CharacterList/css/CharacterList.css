@@ -6,80 +6,168 @@
 
 .CharacterList {
   position: relative;
+  padding: 50px 0;
+  z-index: 2;
+}
+
+h2 {
+  font-size: 48px;
+  color: #01B4C6;
+  width: 100%;
+  text-shadow: 4px 2px 0px #BEE5FD;
 }
 
 ul {
   margin-top: 50px;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
 }
-ul div {
-  background: #333;
+ul .card {
+  background: #BEE5FD;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 5px;
-}
-
-ul div h2 {
-  color: #FFF;
-}
-ul div .img-wrapper {
-  height: 250px;
+  padding: 10px;
   width: 300px;
+  transition: 0.1s;
+  box-shadow: -5px 5px 0 #01B4C6;
+  transform: scale(1);
+  cursor: pointer;
 }
-
-.popup {
-  position: absolute;
-  width: 400px;
-  height: 500px;
-  border-radius: 16px;
-  background: #333;
-  left: 50%;
-  margin-left: -200px;
-  flex-direction: column;
+ul .card:hover {
+  box-shadow: 0 0 0 #01B4C6;
+  transform: scale(1.05);
+}
+ul .card .img-wrapper {
+  height: 300px;
+}
+ul .card .img-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+ul .card .card-bottom {
+  height: 70px;
+  width: 100%;
+  background: #01B4C6;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+ul .card .card-bottom p {
+  color: #BEE5FD;
+  font-size: 20px;
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background: #01B4C6 !important;
+  border: none !important;
+}
+
+.filterContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.filterContainer .nameInput {
+  width: 200px;
+  height: 40px;
+  margin-top: 8px;
+  border-radius: 4px;
+  outline: none;
+  border: 2px solid #01B4C6;
+  padding: 0 10px;
+  font-size: 15px;
+  color: #01B4C6;
+}
+
+.MuiButtonGroup-root {
+  margin-top: 20px;
+}
+
+.MuiList-root {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0;
+}
+.MuiList-root li {
+  background: #BEE5FD;
+}
+
+.MuiButtonGroup-root button {
+  border: 3px solid #BEE5FD;
+  color: #01B4C6;
+}
+.MuiButtonGroup-root button:hover {
+  border: 3px solid #01B4C6;
+}
+
+.popup {
+  position: fixed;
+  z-index: 3;
+  width: 600px;
+  height: 300px;
+  border-radius: 16px;
+  background: #01B4C6;
+  top: 50%;
+  margin-top: -150px;
+  left: 50%;
+  margin-left: -300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 20px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #BEE5FD;
 }
 .popup img {
-  height: 300px;
-  width: 300px;
+  height: 280px;
+  width: 280px;
+  border-radius: 8px;
 }
 .popup h2 {
   font-size: 32px;
-  color: #fff;
+  color: #BEE5FD;
+  text-shadow: none;
+}
+.popup ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  gap: 0;
+  color: #BEE5FD;
+}
+.popup ul li {
+  list-style: none;
+  font-size: 20px;
+}
+.popup ul li span {
+  font-weight: 5 0;
 }
 
 .paginationContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .paginationContainer ul {
   display: flex;
   gap: 5px;
 }
 
-.buttons {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.MuiPaper-root .MuiTableRow-root {
+  border: 4px solid #01B4C6;
 }
-
-.MuiList-root {
-  flex-direction: column;
-  gap: 0;
+.MuiPaper-root .MuiTableRow-root th {
+  color: #01B4C6;
 }
-
-.filterContainer {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.MuiPaper-root .MuiTableRow-root td {
+  color: #01B4C6;
 }/*# sourceMappingURL=CharacterList.css.map */

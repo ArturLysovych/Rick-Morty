@@ -1,8 +1,21 @@
+::selection {
+  background: #BEE5FD;
+  color: #01B4C6;
+}
+
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: #BEE5FD;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #01B4C6;
 }
 
 .logo {

@@ -1,15 +1,22 @@
+$first-color: #01B4C6;
+$second-color: #97ce4c;
+$third-color: #BEE5FD;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 .HomePage {
-    width: 100%;
+    width: 100% !important;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url('../images/bg.png');
     h1 {
-        font-size: 96px;
+        font-size: 124px;
+        color: $first-color;
+        text-shadow: 4px 4px 0px $second-color;
     }
 }
