@@ -64,4 +64,11 @@ ul div .img-wrapper {
 .paginationContainer ul {
   display: flex;
   gap: 5px;
+}
+
+.buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }/*# sourceMappingURL=CharacterList.css.map */

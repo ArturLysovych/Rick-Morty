@@ -5,19 +5,16 @@ const charactersSlice = createSlice({
   name: 'characters',
   initialState: {
     list: [],
-    page: 1, 
+    limit: 0
   },
-  reducers: {
-    setPage: (state, action) => {
-      state.page = action.payload;
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCharacters.fulfilled, (state, action) => {
-      state.list = action.payload;
+      state.list = action.payload.info;
+      state.limit = action.payload.length;
     });
   },
 });
 
-export const setPage = charactersSlice.actions.setPage;
+export const setPage = charactersSlice. actions.setPage;
 export const charactersReducer = charactersSlice.reducer;
