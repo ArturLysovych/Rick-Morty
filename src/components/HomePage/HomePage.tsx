@@ -1,10 +1,12 @@
 import React from 'react'
 import './css/HomePage.css';
 
-export default function HomePage() {
+const HomePage:React.FC = () => {
   return (
     <div className='HomePage'>
         <h1>Rick and Morty</h1>
     </div>
   )
 }
+
+export default HomePage;

@@ -7,7 +7,19 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 
-export default function LocationsTable({ infoArr }) {
+interface IInfo {
+  id: number;
+  name: string;
+  dimension: string;
+  created: string;
+  type: string;
+}
+
+interface IProps {
+  infoArr: IInfo[];
+}
+
+const LocationsTable: React.FC<IProps> = ({ infoArr }) => {
   return (
     <TableContainer sx={{ width: 1240, display: 'flex', justifyContent: 'center' }} component={Paper}>
       <Table size="large" aria-label="a dense table">
@@ -40,3 +52,5 @@ export default function LocationsTable({ infoArr }) {
     </TableContainer>
   );
 }
+
+export default LocationsTable;

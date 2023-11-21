@@ -1,8 +1,8 @@
 import './App.css'
-import { useEffect, useState } from 'react';
-import { CharacterList } from './components/CharacterList/CharacterList.jsx';
+import React, { useEffect, useState } from 'react';
+import CharacterList from './components/CharacterList/CharacterList';
 import HomePage from './components/HomePage/HomePage'
-import Loader from './components/Loader/Loader.jsx';
+import Loader from './components/Loader/Loader';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import '@fontsource/roboto/300.css';
@@ -10,8 +10,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
+const App:React.FC = () => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() =>{
     setTimeout(() => {
@@ -34,4 +34,3 @@ function App() {
 }
 
 export default App;
-

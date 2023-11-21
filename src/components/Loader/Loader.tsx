@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/Loader.css';
 
-export default function Loader() {
+const Loader:React.FC = () => {
   return (
     <div className='Loader'>
         <h2>Loading ...</h2>
@@ -11,3 +11,4 @@ export default function Loader() {
     </div>
   )
 }
+export default Loader;

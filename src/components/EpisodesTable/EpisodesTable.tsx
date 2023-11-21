@@ -7,7 +7,18 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 
-export default function EpisodesTable({ infoArr }) {
+interface IInfo {
+  id: number;
+  name: string;
+  episode: string;
+  air_date: string;
+}
+
+interface IProps {
+  infoArr: IInfo[];
+}
+
+const EpisodesTable: React.FC<IProps> = ({ infoArr }) => {
   return (
     <TableContainer sx={{ width: 1240, display: 'flex', justifyContent: 'center' }} component={Paper}>
       <Table size="large" aria-label="a dense table">
@@ -38,3 +49,5 @@ export default function EpisodesTable({ infoArr }) {
     </TableContainer>
   );
 }
+
+export default EpisodesTable;
