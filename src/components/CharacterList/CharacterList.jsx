@@ -81,9 +81,9 @@ export function CharacterList() {
 
     return (
       <>
-      <div className="CharacterList" style={popupVisible ? { filter: 'blur(10px)' } : { filter: 'blur(0)' }}>
+      <div className="CharacterList">
         <h2>Rick Morty Info</h2>
-          <ButtonGroup variant="outlined" aria-label="outlined button group" size='large'>
+          <ButtonGroup variant="outlined" aria-label="outlined button group" size='large' style={{boxShadow: '0 0 5px #01B4C6'}}>
             <Button onClick={() => {setCurrentInfo("characters"); setPage(1);}}>Characters</Button>
             <Button onClick={() => {setCurrentInfo("episodes"); setPage(1);}}>Episodes</Button>
             <Button onClick={() => {setCurrentInfo("locations"); setPage(1);}}>Locations</Button>
@@ -156,15 +156,20 @@ export function CharacterList() {
             />
         </div> 
       </div>
-      <div className="popup" style={{ transform: popupVisible ? 'scale(1)' : 'scale(0)' }} onClick={hidePopup}>
-      <img src={currentCharacter.image} alt={currentCharacter.id} />
-      <ul>
-        <h2>{currentCharacter.name}</h2>
-          <li>Gender - <span>{currentCharacter.gender}</span></li>
-          <li>Species - <span>{currentCharacter.species}</span></li>
-          <li>Location - <span>{currentCharacter.location && currentCharacter.location.name}</span></li>
-          <li>Status - <span>{currentCharacter.status}</span></li>
-      </ul>
+        <div className="popup" style={{ transform: popupVisible ? 'scale(1)' : 'scale(0)' }} onClick={hidePopup}>
+          <div className="inner">
+          <div className="img-wrapper">
+          <img src={currentCharacter.image} alt={currentCharacter.id} />
+        </div>
+        <ul>
+          <h2>{currentCharacter.name}</h2>
+            <li>Gender - <span>{currentCharacter.gender}</span></li>
+            <li>Species - <span>{currentCharacter.species}</span></li>
+            <li>Location - <span>{currentCharacter.location && currentCharacter.location.name}</span></li>
+            <li>Status - <span>{currentCharacter.status}</span></li>
+            <li>Type - <span>{currentCharacter.type}</span></li>
+        </ul>
+        </div>
     </div> 
     </>
     );

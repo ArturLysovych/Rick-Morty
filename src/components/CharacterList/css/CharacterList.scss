@@ -11,6 +11,7 @@ $third-color: #BEE5FD;
     position: relative;
     padding: 50px 0;
     z-index: 2;
+    box-shadow: 0 0 20px inset $first-color;
 }
 
 h2 {
@@ -34,7 +35,7 @@ ul {
         padding: 10px;
         width: 300px;
         transition: .1s;
-        box-shadow: -5px 5px 0 $first-color;
+        box-shadow: -5px 5px 5px $first-color;
         transform: scale(1);
         cursor: pointer;
         &:hover {
@@ -110,29 +111,42 @@ ul {
 .popup {
     position: fixed;
     z-index: 3;
-    width: 600px;
-    height: 300px;
-    border-radius: 16px;
-    background: $first-color;
-    top: 50%;
-    margin-top: -150px;
-    left: 50%;
-    margin-left: -300px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
     gap: 20px;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
     cursor: pointer;
-    box-shadow: 0 5px 0 $third-color;
-    img {
-        height: 280px;
-        width: 280px;
-        border-radius: 8px;
+    transition: .2s;
+    // box-shadow: 0 0 100px inset #01B4C6;
+    .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #fff;
+        border: 10px solid $first-color;
+        padding: 10px;
+    }
+    .img-wrapper {
+        padding: 10px;
+        background: $first-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            height: 200px;
+            width: 200px;
+        }
     }
     h2 {
         font-size: 32px;
-        color: $third-color;
+        color: $first-color;
         text-shadow: none;
     }
     ul {
@@ -140,12 +154,13 @@ ul {
         flex-direction: column;
         margin-top: 0px;
         gap: 0;
-        color: $third-color;
+        color: $first-color;
+        width: auto;
         li {
             list-style: none;
             font-size: 20px;
             span {
-                font-weight: 5  00;
+                font-weight: 500;
             }
         }
     }

@@ -8,6 +8,7 @@
   position: relative;
   padding: 50px 0;
   z-index: 2;
+  box-shadow: 0 0 20px inset #01B4C6;
 }
 
 h2 {
@@ -33,7 +34,7 @@ ul .card {
   padding: 10px;
   width: 300px;
   transition: 0.1s;
-  box-shadow: -5px 5px 0 #01B4C6;
+  box-shadow: -5px 5px 5px #01B4C6;
   transform: scale(1);
   cursor: pointer;
 }
@@ -110,30 +111,43 @@ ul .card .card-bottom p {
 .popup {
   position: fixed;
   z-index: 3;
-  width: 600px;
-  height: 300px;
-  border-radius: 16px;
-  background: #01B4C6;
-  top: 50%;
-  margin-top: -150px;
-  left: 50%;
-  margin-left: -300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
   gap: 20px;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   cursor: pointer;
-  box-shadow: 0 5px 0 #BEE5FD;
+  transition: 0.2s;
 }
-.popup img {
-  height: 280px;
-  width: 280px;
-  border-radius: 8px;
+.popup .inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  border: 10px solid #01B4C6;
+  padding: 10px;
+}
+.popup .img-wrapper {
+  padding: 10px;
+  background: #01B4C6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup .img-wrapper img {
+  height: 200px;
+  width: 200px;
 }
 .popup h2 {
   font-size: 32px;
-  color: #BEE5FD;
+  color: #01B4C6;
   text-shadow: none;
 }
 .popup ul {
@@ -141,14 +155,15 @@ ul .card .card-bottom p {
   flex-direction: column;
   margin-top: 0px;
   gap: 0;
-  color: #BEE5FD;
+  color: #01B4C6;
+  width: auto;
 }
 .popup ul li {
   list-style: none;
   font-size: 20px;
 }
 .popup ul li span {
-  font-weight: 5 0;
+  font-weight: 500;
 }
 
 .paginationContainer {

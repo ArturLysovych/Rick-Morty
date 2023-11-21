@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Rick-Morty-Font";
+  src: url("../fonts/get_schwifty.ttf");
+}
 * {
   margin: 0;
   padding: 0;
@@ -11,9 +15,12 @@
   align-items: center;
   justify-content: center;
   background-image: url("../images/bg.png");
+  background-size: cover;
+  box-shadow: 0 0 100px inset #01B4C6;
 }
 .HomePage h1 {
+  font-family: "Rick-Morty-Font";
   font-size: 124px;
   color: #01B4C6;
-  text-shadow: 4px 4px 0px #97ce4c;
+  text-shadow: 4px 4px 0px #BEE5FD;
 }/*# sourceMappingURL=HomePage.css.map */
