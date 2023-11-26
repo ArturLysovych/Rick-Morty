@@ -10,6 +10,7 @@ interface ICharacterProps {
 }
 
 const Character: React.FC<ICharacterProps> = ({ character, showPopup }) => {
+  
   const handleClick = () => {
     showPopup(character);
   };

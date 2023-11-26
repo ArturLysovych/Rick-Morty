@@ -21,7 +21,7 @@ interface IProps {
 const EpisodesTable: React.FC<IProps> = ({ infoArr }) => {
   return (
     <TableContainer sx={{ width: 1240, display: 'flex', justifyContent: 'center' }} component={Paper}>
-      <Table size="large" aria-label="a dense table">
+      <Table size="medium" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -31,7 +31,7 @@ const EpisodesTable: React.FC<IProps> = ({ infoArr }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {infoArr.map((row) => (
+          {infoArr.map((row: IInfo) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

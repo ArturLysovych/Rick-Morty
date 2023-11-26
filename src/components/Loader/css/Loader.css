@@ -30,7 +30,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
 }
 .Loader .wrapper-line .line {

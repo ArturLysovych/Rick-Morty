@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import EpisodesTable from '../EpisodesTable/EpisodesTable';
-import LocationsTable from '../LocationsTable/LocationsTable';
-import Character from '../Character/Character';
 import './css/CharacterList.css';
 import { RootState } from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCharacters } from '../../redux/services/api';
-import { fetchEpisodes } from '../../redux/services/api';
-import { fetchLocations } from '../../redux/services/api';
-import { Pagination, Button } from '@mui/material';
-import { ButtonGroup } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { fetchCharacters, fetchEpisodes, fetchLocations } from '../../redux/services/api';
+import { Pagination } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
+import EpisodesTable from '../EpisodesTable/EpisodesTable';
+import LocationsTable from '../LocationsTable/LocationsTable';
+import Character from '../Character/Character';
+import InfoButtonGroup from '../InfoButtonGroup/InfoButtonGroup';
+import CharacterFilter from '../CharacterFilter/CharacterFilter';
+import CharacterPopup from '../CharacterPopup/CharacterPopup';
+import WatchList from '../WatchList/WatchList';
 
 interface ICurrentCharacter {
   id: number;
@@ -25,6 +22,26 @@ interface ICurrentCharacter {
   status: string;
   type?: string;
   image: string;
+}
+
+interface IEpisodeData {
+  air_date: string;
+  characters: string[];
+  created: string;
+  episode: string;
+  id: number;
+  name: string;
+  url: string;
+}
+
+interface ILocationData {
+  created: string;
+  dimension: string;
+  id: number;
+  name: string; 
+  residents: string[];
+  type: string;
+  url: string;
 }
 
 const CharacterList: React.FC = () => {
@@ -52,7 +69,7 @@ const CharacterList: React.FC = () => {
 
   useEffect(() => {
     if (currentInfo === "characters") setPageLimit(charactersPages);
-    if (currentInfo === "episodes") setPageLimit(episodesPages)
+    if (currentInfo === "episodes") setPageLimit(episodesPages);
     if (currentInfo === "locations") setPageLimit(locationsPages);
   }, [currentInfo, charactersPages, episodesPages, locationsPages, page]);
 
@@ -65,7 +82,7 @@ const CharacterList: React.FC = () => {
     setPopupVisible(true);
   };  
 
-  const hidePopup = ():void => {
+  const hidePopup = (): void => {
     setPopupVisible(false);
   };
 
@@ -81,52 +98,16 @@ const CharacterList: React.FC = () => {
     <>
       <div className="CharacterList">
         <h2>Rick Morty Info</h2>
-        <ButtonGroup variant="outlined" aria-label="outlined button group" size='large' style={{ boxShadow: '0 0 5px #01B4C6' }}>
-          <Button onClick={() => { setCurrentInfo("characters"); setPage(1); }}>Characters</Button>
-          <Button onClick={() => { setCurrentInfo("episodes"); setPage(1); }}>Episodes</Button>
-          <Button onClick={() => { setCurrentInfo("locations"); setPage(1); }}>Locations</Button>
-        </ButtonGroup>
+        <InfoButtonGroup setCurrentInfo={setCurrentInfo} setPage={setPage} />
         {currentInfo === "characters" ? (
-          <div className="filterContainer">
-            <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
-              <InputLabel id="demo-select-small-label">Status</InputLabel>
-              <Select
-                labelId="demo-select-small-label"
-                id="demo-select-small"
-                value={filterStatus}
-                label="Status"
-                onChange={handleChangeStatus}
-                >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={'alive'}>alive</MenuItem>
-                <MenuItem value={'dead'}>dead</MenuItem>
-                <MenuItem value={'unknown'}>unknown</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl sx={{ m: 1, minWidth: 120, height: 50 }} size="small" className='selection'>
-              <InputLabel id="demo-select-small-label">Gender</InputLabel>
-              <Select
-                labelId="demo-select-small-label"
-                id="demo-select-small"
-                value={filterGender}
-                label="Status"
-                onChange={handleChangeGender}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={'female'}>female</MenuItem>
-                <MenuItem value={'male'}>male</MenuItem>
-                <MenuItem value={'genderless'}>genderless</MenuItem>
-                <MenuItem value={'unknown'}>unknown</MenuItem>
-              </Select>
-            </FormControl>
-            <input type="text" className='nameInput' placeholder='Search character' onChange={(e) => {
-              setFilterName(e.target.value)
-            }} />
-          </div>
+            <CharacterFilter
+              filterStatus={filterStatus}
+              filterGender={filterGender}
+              filterName={filterName}
+              handleChangeStatus={handleChangeStatus}
+              handleChangeGender={handleChangeGender}
+              setFilterName={setFilterName}
+            />
         ) : null}
         <ul>
           {currentInfo === "characters" ? 
@@ -134,43 +115,36 @@ const CharacterList: React.FC = () => {
                 <Character
                   key={character.id}
                   character={character}
-                  showPopup={(char) => { showPopup(char as any) }}
+                  showPopup={(character: any) => { showPopup(character) }}
                 />
                 )
           ) : null}
           {currentInfo === "episodes" ? (
-            <EpisodesTable infoArr={episodes as any} />
+            <EpisodesTable infoArr={episodes as IEpisodeData[]} />
           ) : null}
           {currentInfo === "locations" ? (
-            <LocationsTable infoArr={locations as any} />
+            <LocationsTable infoArr={locations as ILocationData[]} />
           ) : null}
+          {currentInfo === "watchlist" ? (
+            <WatchList />
+          ): null}
         </ul>
-        <div className='paginationContainer'>
-          <Pagination
-            count={pageLimit}
-            page={page}
-            color="primary"
-            onChange={(event, newPage) => {
-              handlePageChange(newPage);
-            }}
-          />
-        </div>
-      </div>
-      <div className="popup" style={{ transform: popupVisible ? 'scale(1)' : 'scale(0)' }} onClick={hidePopup}>
-        <div className="inner">
-          <div className="img-wrapper">
-            <img src={currentCharacter.image} alt={currentCharacter.name} />
+        {currentInfo === "watchlist" ? null : (
+          <div className='paginationContainer'>
+            <Pagination
+              count={pageLimit}
+              page={page}
+              color="primary"
+              onChange={(event, newPage) => { handlePageChange(newPage) }}
+            />
           </div>
-          <ul>
-            <h2>{currentCharacter.name}</h2>
-            <li>Gender - <span>{currentCharacter.gender}</span></li>
-            <li>Species - <span>{currentCharacter.species}</span></li>
-            <li>Location - <span>{currentCharacter.location && currentCharacter.location.name}</span></li>
-            <li>Status - <span>{currentCharacter.status}</span></li>
-            <li>Type - <span>{currentCharacter.type}</span></li>
-          </ul>
-        </div>
+        )}
       </div>
+      <CharacterPopup
+        popupVisible={popupVisible}
+        hidePopup={hidePopup}
+        currentCharacter={currentCharacter}
+      />
     </>
   );
 }

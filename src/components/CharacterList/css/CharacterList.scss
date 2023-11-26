@@ -12,6 +12,9 @@ $third-color: #BEE5FD;
     padding: 50px 0;
     z-index: 2;
     box-shadow: 0 0 20px inset $first-color;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
 }
 
 h2 {
@@ -23,6 +26,7 @@ h2 {
 ul {
     margin-top: 50px;
     width: 100%;
+    max-width: 1240px;
     display: flex;
     justify-content: center;
     gap: 40px;
@@ -35,7 +39,7 @@ ul {
         padding: 10px;
         width: 300px;
         transition: .1s;
-        box-shadow: -5px 5px 5px $first-color;
+        // box-shadow: -5px 5px 5px $first-color;
         transform: scale(1);
         cursor: pointer;
         &:hover {
@@ -44,6 +48,7 @@ ul {
         }
         .img-wrapper {
             height: 300px;
+            border: 10px solid $first-color;
             img {
                 width: 100%;
                 height: 100%;
@@ -52,13 +57,14 @@ ul {
         .card-bottom {
             height: 70px;
             width: 100%;
-            background: $first-color;
+            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             p {
-                color: $third-color;
+                color: $first-color;
                 font-size: 20px;
+                font-weight: 700;
             }
         }
     }
@@ -185,5 +191,21 @@ ul {
         td {
             color: $first-color;
         }
+    }
+}
+
+.btn-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    .watchList-btn {
+        height: 47px;
+        margin-bottom: -2px;
+        background: #fff;
+        border: 3px solid $third-color;
+        border-radius: 4px;
+        box-shadow: 0 0 5px $first-color;
+        color: $first-color;
     }
 }

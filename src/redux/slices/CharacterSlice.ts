@@ -5,8 +5,11 @@ interface ICharacter {
   id: number
 }
 
-interface ICharacterResponse extends ICharacterDataResponse {
+interface ICharacterResponse {
   results: ICharacter[];
+  info: {
+    pages: number;
+  };
 }
 
 export interface ICharacterState {

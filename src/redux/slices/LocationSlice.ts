@@ -2,11 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchLocations, IOtherDataResponse } from '../services/api';
 
 interface ILocation {
-  id: number
+  // no types
 }
 
-interface ILocationResponse extends IOtherDataResponse {
+interface ILocationResponse {
   results: ILocation[];
+  info: {
+    pages: number;
+  };
 }
 
 export interface ILocationState {

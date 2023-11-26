@@ -9,6 +9,9 @@
   padding: 50px 0;
   z-index: 2;
   box-shadow: 0 0 20px inset #01B4C6;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 h2 {
@@ -21,6 +24,7 @@ h2 {
 ul {
   margin-top: 50px;
   width: 100%;
+  max-width: 1240px;
   display: flex;
   justify-content: center;
   gap: 40px;
@@ -34,7 +38,6 @@ ul .card {
   padding: 10px;
   width: 300px;
   transition: 0.1s;
-  box-shadow: -5px 5px 5px #01B4C6;
   transform: scale(1);
   cursor: pointer;
 }
@@ -44,6 +47,7 @@ ul .card:hover {
 }
 ul .card .img-wrapper {
   height: 300px;
+  border: 10px solid #01B4C6;
 }
 ul .card .img-wrapper img {
   width: 100%;
@@ -52,14 +56,15 @@ ul .card .img-wrapper img {
 ul .card .card-bottom {
   height: 70px;
   width: 100%;
-  background: #01B4C6;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 ul .card .card-bottom p {
-  color: #BEE5FD;
+  color: #01B4C6;
   font-size: 20px;
+  font-weight: 700;
 }
 
 .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
@@ -184,5 +189,21 @@ ul .card .card-bottom p {
   color: #01B4C6;
 }
 .MuiPaper-root .MuiTableRow-root td {
+  color: #01B4C6;
+}
+
+.btn-group {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+}
+.btn-group .watchList-btn {
+  height: 47px;
+  margin-bottom: -2px;
+  background: #fff;
+  border: 3px solid #BEE5FD;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #01B4C6;
   color: #01B4C6;
 }/*# sourceMappingURL=CharacterList.css.map */

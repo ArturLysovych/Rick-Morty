@@ -29,7 +29,8 @@ const App:React.FC = () => {
     ) : (
       <Loader />
     )}
-  </Provider>  
+      {/* <WatchList /> */}
+    </Provider>  
   )
 }
 

@@ -2,11 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchEpisodes, IOtherDataResponse } from '../services/api';
 
 interface IEpisode {
-  id: number
+  // no types
 }
 
-interface IEpisodeResponse extends IOtherDataResponse {
+interface IEpisodeResponse {
   results: IEpisode[];
+  info: {
+    pages: number;
+  };
 }
 
 export interface IEpisodeState {
