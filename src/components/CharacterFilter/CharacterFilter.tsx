@@ -1,17 +1,8 @@
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import { SelectChangeEvent } from '@mui/material/Select';
+import { ICharacterFilterProps } from './interfaces';
 
-interface CharacterFilterProps {
-  filterStatus: string;
-  filterGender: string;
-  filterName: string;
-  handleChangeStatus: (event: SelectChangeEvent<string>) => void;
-  handleChangeGender: (event: SelectChangeEvent<string>) => void;
-  setFilterName: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const CharacterFilter: React.FC<CharacterFilterProps> = ( props ) => {
+const CharacterFilter: React.FC<ICharacterFilterProps> = ( props ) => {
     const {
         filterStatus,
         filterGender,

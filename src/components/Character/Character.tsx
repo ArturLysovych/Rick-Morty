@@ -1,13 +1,6 @@
 import React from 'react';
 
-interface ICharacterProps {
-  character: {
-    id: number;
-    name: string;
-    image: string;
-  };
-  showPopup: (character: { id: number; name: string; image: string, }) => void;
-}
+import { ICharacterProps } from './interfaces';
 
 const Character: React.FC<ICharacterProps> = ({ character, showPopup }) => {
   

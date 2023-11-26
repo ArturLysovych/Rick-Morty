@@ -1,10 +1,7 @@
 import React from 'react';
 import { ButtonGroup, Button } from '@mui/material';
 
-interface IProps {
-  setCurrentInfo: React.Dispatch<React.SetStateAction<string>>;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
-}
+import { IProps } from './interfaces';
 
 const InfoButtonGroup: React.FC<IProps> = ( props ) => {
     const { setCurrentInfo, setPage } = props;

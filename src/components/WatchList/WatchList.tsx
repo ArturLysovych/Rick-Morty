@@ -1,11 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import './css/WatchList.css';
 
-interface ITask {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import { ITask } from './interfaces';
 
 const WatchList: React.FC = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);

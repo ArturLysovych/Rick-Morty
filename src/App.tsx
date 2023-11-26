@@ -10,7 +10,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-const App:React.FC = () => {
+const app = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() =>{
@@ -29,9 +29,8 @@ const App:React.FC = () => {
     ) : (
       <Loader />
     )}
-      {/* <WatchList /> */}
     </Provider>  
   )
 }
 
-export default App;
+export default app;

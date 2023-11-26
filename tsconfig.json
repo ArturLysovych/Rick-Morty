@@ -1,19 +1,37 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "lib": ["dom", "es2021"],
-      "jsx": "react",
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "noEmit": true
-    },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/main.jsx"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "es2021"
+    ],
+    "jsx": "preserve",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowJs": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/main.jsx",
+    "src/_app.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+, "src/tests/loader.test.tsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
-  

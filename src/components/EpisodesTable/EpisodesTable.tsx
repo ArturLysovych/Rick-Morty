@@ -7,16 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 
-interface IInfo {
-  id: number;
-  name: string;
-  episode: string;
-  air_date: string;
-}
-
-interface IProps {
-  infoArr: IInfo[];
-}
+import { IInfo, IProps } from './interfaces'; 
 
 const EpisodesTable: React.FC<IProps> = ({ infoArr }) => {
   return (

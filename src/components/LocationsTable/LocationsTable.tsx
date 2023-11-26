@@ -7,17 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import Paper from '@mui/material/Paper';
 
-interface IInfo {
-  id: number;
-  name: string;
-  dimension: string;
-  created: string;
-  type: string;
-}
-
-interface IProps {
-  infoArr: IInfo[];
-}
+import { IInfo, IProps } from './interfaces';
 
 const LocationsTable: React.FC<IProps> = ({ infoArr }) => {
   return (

@@ -12,37 +12,7 @@ import InfoButtonGroup from '../InfoButtonGroup/InfoButtonGroup';
 import CharacterFilter from '../CharacterFilter/CharacterFilter';
 import CharacterPopup from '../CharacterPopup/CharacterPopup';
 import WatchList from '../WatchList/WatchList';
-
-interface ICurrentCharacter {
-  id: number;
-  name: string;
-  gender: string;
-  species: string;
-  location?: { name: string };
-  status: string;
-  type?: string;
-  image: string;
-}
-
-interface IEpisodeData {
-  air_date: string;
-  characters: string[];
-  created: string;
-  episode: string;
-  id: number;
-  name: string;
-  url: string;
-}
-
-interface ILocationData {
-  created: string;
-  dimension: string;
-  id: number;
-  name: string; 
-  residents: string[];
-  type: string;
-  url: string;
-}
+import { ICurrentCharacter, IEpisodeData, ILocationData } from './interfaces';
 
 const CharacterList: React.FC = () => {
   const [currentCharacter, setCurrentCharacter] = useState<ICurrentCharacter>({ id: 0, name: '', gender: '', species: '', status: '', image: '' });
@@ -85,7 +55,6 @@ const CharacterList: React.FC = () => {
   const hidePopup = (): void => {
     setPopupVisible(false);
   };
-
   const handleChangeStatus = (event: SelectChangeEvent<string>): void => {
     setFilterStatus(event.target.value);
   };

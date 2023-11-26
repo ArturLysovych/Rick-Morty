@@ -1,21 +1,8 @@
 import React from 'react';
 
-interface CharacterPopupProps {
-  popupVisible: boolean;
-  hidePopup: () => void;
-  currentCharacter: {
-    id: number;
-    name: string;
-    gender: string;
-    species: string;
-    location?: { name: string };
-    status: string;
-    type?: string;
-    image: string;
-  };
-}
+import { ICharacterPopupProps } from './interfaces';
 
-const CharacterPopup: React.FC<CharacterPopupProps> = ( props ) => {
+const CharacterPopup: React.FC<ICharacterPopupProps> = ( props ) => {
     const { popupVisible, hidePopup, currentCharacter } = props;
 
     return (
