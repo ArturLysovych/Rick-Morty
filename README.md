@@ -1,4 +1,4 @@
-# React + TS + RTK + RTK Query + Vite
+# React + TS + RTK + Vite
 
 LINK - https://rick-morty-omega-two.vercel.app/
 
