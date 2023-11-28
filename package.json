@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "main.jsx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
