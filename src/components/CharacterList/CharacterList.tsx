@@ -102,10 +102,10 @@ const CharacterList: React.FC = () => {
                 />
                 )
           ) : null}
-          {currentInfo === "episodes" ? (
+          {currentInfo === "episodes" && info ? (
             <EpisodesTable infoArr={episodes as IEpisodeData[]} />
           ) : null}
-          {currentInfo === "locations" ? (
+          {currentInfo === "locations" && info ? (
             <LocationsTable infoArr={locations as ILocationData[]} />
           ) : null}
         </ul>
