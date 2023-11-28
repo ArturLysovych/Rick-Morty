@@ -1,0 +1,298 @@
+$first-color: #6F256F;
+$second-color: #8A458A;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.CharacterList {
+    position: relative;
+    padding: 50px 20px;
+    z-index: 2;
+    box-shadow: 0 0 20px inset $first-color;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    .selectShow {
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin: 50px;
+        width: 100px;
+        height: 50px;
+        background: $second-color;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 0px 2px 0px 2px #662266, 0 0 10px $first-color;
+        z-index: 5;
+        .select {
+            width: 40px;
+            height: 40px;
+            background: $first-color;
+            border-radius: 50%;
+            box-shadow: 0px 0px 5px  $first-color;
+            cursor: pointer;
+            transform: scale(1) translateX(0) translateY(0);
+            transition: .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid $second-color;
+            &:nth-child(1) {
+                div {
+                    height: 30px;
+                    width: 30px;
+                    background-image: url('../../images/characters.png');
+                    background-size: cover;
+                }
+            }
+            &:nth-child(2) {
+                div {
+                    height: 25px;
+                    width: 25px;
+                    background-image: url('../../images/list.png');
+                    background-size: cover;
+                }
+            }
+            &:hover {
+                &:nth-child(1) {
+                    box-shadow: 0 0 20px $first-color;
+                    transform: scale(1.4) translateX(-5px) translateY(-10px);
+                    position: relative;
+                }
+                &:nth-child(2) {
+                    box-shadow: 0 0 20px $first-color;
+                    transform: scale(1.4) translateX(5px) translateY(-10px);
+                }
+            }
+        }
+    }
+}
+
+h2 {
+    font-size: 48px;
+    color: $first-color;
+    width: 100%;
+    text-shadow: 4px 2px 0px $second-color;
+}
+
+ul {
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1240px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    .card {
+        background: $second-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        width: 300px;
+        transition: .2s;
+        transform: scale(1);
+        cursor: pointer;
+
+        &:hover {
+            .img-wrapper {
+                height: 370px;
+            }
+            .card-bottom {
+                height: 0;
+                p {
+                    font-size: 0px;
+                }
+            }
+        }
+        .img-wrapper {
+            height: 300px;
+            border: 10px solid $first-color;
+            transition: .2s;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .card-bottom {
+            height: 70px;
+            width: 100%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .2s;
+            p {
+                color: $first-color;
+                font-size: 20px;
+                font-weight: 700;
+                transition: .2s;
+            }
+        }
+    }
+}
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    background: $first-color !important;
+    border: none !important;
+}
+.filterContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    .nameInput {
+        width: 200px;
+        height: 40px;
+        margin-top: 8px;
+        border-radius: 4px;
+        outline: none;
+        border: 2px solid $first-color;
+        padding: 0 10px;
+        font-size: 15px;
+        color: $first-color;
+        img {
+            height: 50px;
+            width: 50px;
+        }
+    }
+}
+.MuiButtonGroup-root {
+    margin-top: 20px;
+}
+.MuiList-root {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 0;
+}
+
+.MuiButtonGroup-root {
+    button {
+        border: 3px solid $second-color;
+        color: $first-color;
+        &:hover {
+            border: 3px solid $first-color;
+        }
+    }
+}
+
+.popup {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    gap: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 0 5px $second-color;
+    .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: #fff;
+        border: 10px solid $first-color;
+        padding: 10px;
+    }
+    .img-wrapper {
+        padding: 10px;
+        background: $first-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 5px $first-color;
+        img {
+            height: 200px;
+            width: 200px;
+        }
+    }
+    h2 {
+        font-size: 32px;
+        color: $first-color;
+        text-shadow: none;
+        align-self: flex-start;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 0px;
+        gap: 0;
+        color: $first-color;
+        width: auto;
+        .circle {
+            height: 8px;
+            width: 8px;
+            background: $first-color;
+            box-shadow: 0 0 1px $first-color;
+        }
+        li {
+            list-style: none;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            span {
+                font-weight: 500;
+            }
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+
+.paginationContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    ul {
+        display: flex;
+        gap: 5px;
+    }
+}
+.MuiPaper-root {
+    .MuiTableRow-root {
+        border: 4px solid $first-color;
+        th {
+            color: $first-color;
+        }
+        td {
+            color: $first-color;
+        }
+    }
+}
+
+.btn-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    .watchList-btn {
+        height: 47px;
+        margin-bottom: -2px;
+        background: #fff;
+        border: 3px solid $second-color;
+        border-radius: 4px;
+        box-shadow: 0 0 5px $first-color;
+        color: $first-color;
+    }
+}   
+
+@import '../media/CharacterList-media.scss';

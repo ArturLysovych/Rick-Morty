@@ -1,6 +1,6 @@
 ::selection {
-  background: #BEE5FD;
-  color: #01B4C6;
+  background: #6F256F;
+  color: #fff;
 }
 
 #root {
@@ -8,16 +8,17 @@
   margin: 0 auto;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
   width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background-color: #BEE5FD;
+  background-color: #fff;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #01B4C6;
+  background-color: #6F256F;
 }
 
 .logo {

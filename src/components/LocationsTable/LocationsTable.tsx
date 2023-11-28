@@ -11,7 +11,7 @@ import { IInfo, IProps } from './interfaces';
 
 const LocationsTable: React.FC<IProps> = ({ infoArr }) => {
   return (
-    <TableContainer sx={{ width: 1240, display: 'flex', justifyContent: 'center' }} component={Paper}>
+    <TableContainer sx={{ width: 1100, display: 'flex', justifyContent: 'center' }} component={Paper}>
       <Table size="medium" aria-label="a dense table">
         <TableHead>
           <TableRow>

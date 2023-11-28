@@ -1,0 +1,139 @@
+$first-color: #6F256F;
+$second-color: #8A458A;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Rick-Morty-Font";
+    src: url('../fonts/get_schwifty.ttf');
+}
+
+.WatchList {
+    width: 800px;
+    border: 5px solid $first-color;
+    box-shadow: 0px 2px 0px 2px $second-color, 0 0 10px $first-color;
+    padding: 10px 20px;
+    border-radius: 36px;
+    margin: 0;
+    h2 {
+        font-family: "Rick-Morty-Font";
+        font-size: 72px;
+        text-shadow: 2px 2px 0px $second-color;
+        font-weight: 500;
+        color: $first-color;
+    }
+    .searchContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 10px;
+        input, button {
+            height: 40px;
+            width: 50%;
+            border-radius: 12px;
+        }
+        button {
+            outline: none;
+            border: 3px solid $first-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $first-color;
+        }
+
+        input {
+            padding: 0 10px;
+            outline: none;
+            border: 3px solid $first-color;
+            color: $first-color;    
+        }
+    }
+    .listToWatch {
+        gap: 10px;
+        margin-top: 20px;
+        border: 4px solid $first-color;
+        padding: 10px;
+        max-height: 400px;
+        width: 100%;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 12px;
+        li {
+            list-style: none;
+            width: 100%;
+            min-width: 100%;
+            height: 50px;
+            border: 4px solid $first-color;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10px;
+            input[type=checkbox] {
+                position: relative;
+                border: 2px solid $first-color;
+                border-radius: 2px;
+                background: none;
+                cursor: pointer;
+                line-height: 0;
+                margin: 0 .6em 0 0;
+                outline: 0;
+                padding: 0 !important;
+                vertical-align: text-top;
+                height: 20px;
+                width: 20px;
+                -webkit-appearance: none;
+                opacity: .5;
+            }
+            input[type=checkbox]:hover {
+                opacity: 1;
+            }
+            input[type=checkbox]:checked {
+                background-color: $first-color;
+                opacity: 1;
+            }
+            input[type=checkbox]:before {
+                content: '';
+                position: absolute;
+                right: 50%;
+                top: 50%;
+                width: 4px;
+                height: 10px;
+                border: solid #FFF;
+                border-width: 0 2px 2px 0;
+                margin: -1px -1px 0 -1px;
+                transform: rotate(45deg) translate(-50%, -50%);
+                z-index: 2;
+            }
+
+            &:nth-child(1) {
+                margin: 0;
+            }
+            .removeTask {
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: $first-color;
+                color: #fff;
+            }
+            .taskName {
+                width: 150px;
+                overflow-x: scroll;
+                &::-webkit-scrollbar {
+                    height: 4px;
+                }
+                  
+                &::-webkit-scrollbar-track {
+                  background-color: #f1f1f1;
+                }
+            }
+        }
+    }
+}

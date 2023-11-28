@@ -1,0 +1,345 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.CharacterList {
+  position: relative;
+  padding: 50px 20px;
+  z-index: 2;
+  box-shadow: 0 0 20px inset #6F256F;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+.CharacterList .selectShow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 50px;
+  width: 100px;
+  height: 50px;
+  background: #8A458A;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0px 2px 0px 2px #662266, 0 0 10px #6F256F;
+  z-index: 5;
+}
+.CharacterList .selectShow .select {
+  width: 40px;
+  height: 40px;
+  background: #6F256F;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px #6F256F;
+  cursor: pointer;
+  transform: scale(1) translateX(0) translateY(0);
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #8A458A;
+}
+.CharacterList .selectShow .select:nth-child(1) div {
+  height: 30px;
+  width: 30px;
+  background-image: url("../../images/characters.png");
+  background-size: cover;
+}
+.CharacterList .selectShow .select:nth-child(2) div {
+  height: 25px;
+  width: 25px;
+  background-image: url("../../images/list.png");
+  background-size: cover;
+}
+.CharacterList .selectShow .select:hover:nth-child(1) {
+  box-shadow: 0 0 20px #6F256F;
+  transform: scale(1.4) translateX(-5px) translateY(-10px);
+  position: relative;
+}
+.CharacterList .selectShow .select:hover:nth-child(2) {
+  box-shadow: 0 0 20px #6F256F;
+  transform: scale(1.4) translateX(5px) translateY(-10px);
+}
+
+h2 {
+  font-size: 48px;
+  color: #6F256F;
+  width: 100%;
+  text-shadow: 4px 2px 0px #8A458A;
+}
+
+ul {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+ul .card {
+  background: #8A458A;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  width: 300px;
+  transition: 0.2s;
+  transform: scale(1);
+  cursor: pointer;
+}
+ul .card:hover .img-wrapper {
+  height: 370px;
+}
+ul .card:hover .card-bottom {
+  height: 0;
+}
+ul .card:hover .card-bottom p {
+  font-size: 0px;
+}
+ul .card .img-wrapper {
+  height: 300px;
+  border: 10px solid #6F256F;
+  transition: 0.2s;
+}
+ul .card .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+ul .card .card-bottom {
+  height: 70px;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+ul .card .card-bottom p {
+  color: #6F256F;
+  font-size: 20px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background: #6F256F !important;
+  border: none !important;
+}
+
+.filterContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.filterContainer .nameInput {
+  width: 200px;
+  height: 40px;
+  margin-top: 8px;
+  border-radius: 4px;
+  outline: none;
+  border: 2px solid #6F256F;
+  padding: 0 10px;
+  font-size: 15px;
+  color: #6F256F;
+}
+.filterContainer .nameInput img {
+  height: 50px;
+  width: 50px;
+}
+
+.MuiButtonGroup-root {
+  margin-top: 20px;
+}
+
+.MuiList-root {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0;
+}
+
+.MuiButtonGroup-root button {
+  border: 3px solid #8A458A;
+  color: #6F256F;
+}
+.MuiButtonGroup-root button:hover {
+  border: 3px solid #6F256F;
+}
+
+.popup {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  gap: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 0 5px #8A458A;
+}
+.popup .inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  border: 10px solid #6F256F;
+  padding: 10px;
+}
+.popup .img-wrapper {
+  padding: 10px;
+  background: #6F256F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px #6F256F;
+}
+.popup .img-wrapper img {
+  height: 200px;
+  width: 200px;
+}
+.popup h2 {
+  font-size: 32px;
+  color: #6F256F;
+  text-shadow: none;
+  align-self: flex-start;
+}
+.popup ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0px;
+  gap: 0;
+  color: #6F256F;
+  width: auto;
+}
+.popup ul .circle {
+  height: 8px;
+  width: 8px;
+  background: #6F256F;
+  box-shadow: 0 0 1px #6F256F;
+}
+.popup ul li {
+  list-style: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.popup ul li span {
+  font-weight: 500;
+}
+.popup ul li:hover {
+  transform: scale(1.05);
+}
+
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.paginationContainer ul {
+  display: flex;
+  gap: 5px;
+}
+
+.MuiPaper-root .MuiTableRow-root {
+  border: 4px solid #6F256F;
+}
+.MuiPaper-root .MuiTableRow-root th {
+  color: #6F256F;
+}
+.MuiPaper-root .MuiTableRow-root td {
+  color: #6F256F;
+}
+
+.btn-group {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+}
+.btn-group .watchList-btn {
+  height: 47px;
+  margin-bottom: -2px;
+  background: #fff;
+  border: 3px solid #8A458A;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #6F256F;
+  color: #6F256F;
+}
+
+@media screen and (max-width: 960px) {
+  .CharacterList h1 {
+    font-size: 72px;
+  }
+  .CharacterList .selectShow {
+    margin: 0px;
+    top: 100%;
+    left: 50%;
+    margin-top: -46px;
+    margin-left: -50px;
+    border-radius: 0;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+  }
+}
+@media screen and (max-width: 860px) {
+  .WatchList {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .popup .inner {
+    width: 400px;
+    flex-direction: column;
+  }
+  .popup .inner img {
+    height: 300px;
+    width: 100%;
+  }
+  .popup .inner ul {
+    align-items: center;
+  }
+  .popup .inner ul li {
+    text-align: center;
+    width: 300px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .WatchList h2 {
+    font-size: 48px;
+  }
+  .CharacterList .filterContainer {
+    gap: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .CharacterList .filterContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .CharacterList .filterContainer .nameIpnut {
+    margin-top: 0;
+  }
+  .CharacterList .WatchList .listToWatch li .taskName {
+    width: 100px;
+  }
+}/*# sourceMappingURL=CharacterList.css.map */

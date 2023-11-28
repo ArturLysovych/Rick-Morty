@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Rick-Morty-Font";
+  src: url("../../fonts/get_schwifty.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.HomePage {
+  width: 100% !important;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../images/bg3.png");
+  background-position: center center;
+  background-size: cover;
+  box-shadow: 0 0 100px inset #6F256F;
+  position: relative;
+  animation: changeBackgroundAnimation 10s ease-in-out infinite;
+}
+@keyframes changeBackgroundAnimation {
+  0% {
+    background-image: url("../../images/bg1.png");
+  }
+  33.33% {
+    background-image: url("../../images/bg2.jpg");
+  }
+  66.66% {
+    background-image: url("../../images/bg3.png");
+  }
+  100% {
+    background-image: url("../../images/bg1.png");
+  }
+}
+.HomePage h1 {
+  font-family: "Rick-Morty-Font";
+  font-size: 124px;
+  color: #8A458A;
+  text-shadow: 4px 4px 0px #6F256F, 0px 5px 5px #6F256F;
+  animation: pulseAnimation 2s ease-in-out infinite;
+  cursor: pointer;
+}
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 962px) {
+  .HomePage h1 {
+    font-size: 96px;
+  }
+}
+@media screen and (max-width: 706px) {
+  .HomePage h1 {
+    font-size: 72px;
+  }
+}/*# sourceMappingURL=HomePage.css.map */

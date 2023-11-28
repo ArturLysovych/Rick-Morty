@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import './css/WatchList.css';
+import './css/base/WatchList.css';
 
 import { ITask } from './interfaces';
 
@@ -54,10 +54,14 @@ const WatchList: React.FC = () => {
             setNewTask(e.target.value);
           }}
         />
-        <button onClick={addTask}>Add</button>
+        <button onClick={():void => {
+          addTask();
+          setNewTask('');
+          }}>Add</button>
       </div>
       <ul className='listToWatch'>
-        {tasks.map((task) => (
+      {tasks.length !== 0 ? (
+        tasks.map((task) => (
           <li key={task.id}>
             <input
               type='checkbox'
@@ -76,7 +80,10 @@ const WatchList: React.FC = () => {
               Remove
             </button>
           </li>
-        ))}
+        ))
+      ) : (
+        'empty watchlist'
+      )}
       </ul>
     </div>
   );

@@ -1,0 +1,57 @@
+@media screen and (max-width: 960px) {
+  .CharacterList h1 {
+    font-size: 72px;
+  }
+  .CharacterList .selectShow {
+    margin: 0px;
+    top: 100%;
+    left: 50%;
+    margin-top: -46px;
+    margin-left: -50px;
+    border-radius: 0;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+  }
+}
+@media screen and (max-width: 860px) {
+  .WatchList {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .popup .inner {
+    width: 400px;
+    flex-direction: column;
+  }
+  .popup .inner img {
+    height: 300px;
+    width: 100%;
+  }
+  .popup .inner ul {
+    align-items: center;
+  }
+  .popup .inner ul li {
+    text-align: center;
+    width: 300px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .WatchList h2 {
+    font-size: 48px;
+  }
+  .CharacterList .filterContainer {
+    gap: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .CharacterList .filterContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .CharacterList .filterContainer .nameIpnut {
+    margin-top: 0;
+  }
+  .CharacterList .WatchList .listToWatch li .taskName {
+    width: 100px;
+  }
+}/*# sourceMappingURL=CharacterList-media.css.map */

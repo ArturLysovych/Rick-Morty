@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import './css/CharacterList.css';
-import { RootState } from '../../redux/store';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchCharacters, fetchEpisodes, fetchLocations } from '../../redux/services/api';
 import { Pagination } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
-import EpisodesTable from '../EpisodesTable/EpisodesTable';
-import LocationsTable from '../LocationsTable/LocationsTable';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCharacters, fetchEpisodes, fetchLocations } from '../../redux/services/api';
+import { RootState } from '../../redux/store';
 import Character from '../Character/Character';
-import InfoButtonGroup from '../InfoButtonGroup/InfoButtonGroup';
 import CharacterFilter from '../CharacterFilter/CharacterFilter';
 import CharacterPopup from '../CharacterPopup/CharacterPopup';
+import EpisodesTable from '../EpisodesTable/EpisodesTable';
+import InfoButtonGroup from '../InfoButtonGroup/InfoButtonGroup';
+import LocationsTable from '../LocationsTable/LocationsTable';
 import WatchList from '../WatchList/WatchList';
+import './css/base/CharacterList.css';
 import { ICurrentCharacter, IEpisodeData, ILocationData } from './interfaces';
 
 const CharacterList: React.FC = () => {
@@ -23,6 +23,7 @@ const CharacterList: React.FC = () => {
   const [filterStatus, setFilterStatus] = useState<string>('');
   const [filterGender, setFilterGender] = useState<string>('');
   const [filterName, setFilterName] = useState<string>('');
+  const [info, setInfo] = useState(true);
   const characters = useSelector((state: RootState) => state.characters.list);
   const episodes = useSelector((state: RootState) => state.episodes.list);
   const locations = useSelector((state: RootState) => state.locations.list);
@@ -66,9 +67,22 @@ const CharacterList: React.FC = () => {
   return (
     <>
       <div className="CharacterList">
-        <h2>Rick Morty Info</h2>
-        <InfoButtonGroup setCurrentInfo={setCurrentInfo} setPage={setPage} />
-        {currentInfo === "characters" ? (
+        <div className="selectShow">
+          <div className='select' onClick={():void =>  {
+            setInfo(true);
+          }}>
+            <div></div>
+          </div>
+          <div className='select' onClick={():void => {
+            setInfo(false);
+          }}>
+            <div></div>
+          </div>
+        </div>
+        {info? (<h2>Rick Morty Info</h2>) : null}
+        {info? (<InfoButtonGroup setCurrentInfo={setCurrentInfo} setPage={setPage} />)
+             : <WatchList /> }
+        {currentInfo === "characters" && info ? (
             <CharacterFilter
               filterStatus={filterStatus}
               filterGender={filterGender}
@@ -79,7 +93,7 @@ const CharacterList: React.FC = () => {
             />
         ) : null}
         <ul>
-          {currentInfo === "characters" ? 
+          {currentInfo === "characters" && info ? 
               characters.map((character: any) => (
                 <Character
                   key={character.id}
@@ -94,11 +108,8 @@ const CharacterList: React.FC = () => {
           {currentInfo === "locations" ? (
             <LocationsTable infoArr={locations as ILocationData[]} />
           ) : null}
-          {currentInfo === "watchlist" ? (
-            <WatchList />
-          ): null}
         </ul>
-        {currentInfo === "watchlist" ? null : (
+        {!info ? null : (
           <div className='paginationContainer'>
             <Pagination
               count={pageLimit}
