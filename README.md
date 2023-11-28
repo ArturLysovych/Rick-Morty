@@ -1,6 +1,4 @@
-# React + TS + RTK + Vite
-
-LINK - https://rick-morty-omega-two.vercel.app/
+https://rick-morty-beta-seven.vercel.app/# React + TS + RTK + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
